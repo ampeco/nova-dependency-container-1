@@ -19,8 +19,8 @@ class FieldServiceProvider extends ServiceProvider
     {
         // assets
         Nova::serving(function (ServingNova $event) {
-            Nova::script('dependency-container', __DIR__.'/../dist/js/field.js');
-            Nova::style('dependency-container', __DIR__.'/../dist/css/field.css');
+            Nova::script('dependency-container-2024-03-14', __DIR__.'/../dist/js/field.js');
+            Nova::style('dependency-container-2024-03-14', __DIR__.'/../dist/css/field.css');
         });
 
         // Override ActionController after NovaServiceProvider loaded

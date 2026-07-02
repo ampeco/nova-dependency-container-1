@@ -86,11 +86,11 @@ trait HasDependencies
     protected function doesRouteRequireChildFields(): bool
     {
         return Str::endsWith(Route::currentRouteAction(), [
-            'FieldDestroyController@handle',
-            'ResourceUpdateController@handle',
-            'ResourceStoreController@handle',
-            'AssociatableController@index',
-            'MorphableController@index',
+            'FieldDestroyController',
+            'ResourceUpdateController',
+            'ResourceStoreController',
+            'AssociatableController',
+            'MorphableController',
         ]);
     }
 }

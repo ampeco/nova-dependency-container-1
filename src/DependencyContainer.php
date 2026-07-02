@@ -372,7 +372,7 @@ class DependencyContainer extends Field
         /** @var Field $field */
         foreach ($this->meta['fields'] as $field) {
             // if field is DependencyContainer, then add rules from dependant fields
-            if ($field instanceof DependencyContainer && $methodName === "getRules") {
+            if ($field instanceof DependencyContainer) {
                 $fieldsRules[Str::random()] = $field->getSituationalRulesSet($request, $methodName);
             } elseif ($field instanceof Medialibrary) {
                 $rules = $field->{$methodName}($request);
@@ -400,11 +400,15 @@ class DependencyContainer extends Field
         $result = [];
 
         foreach ($array as $key => $value) {
-            if (is_string($key) && is_array($value) && !empty($value)) {
+            if (is_string($key) && is_array($value)) {
+                if (!empty($value)) {
                 if (count(array_filter(array_keys($value), 'is_string')) > 0) {
                     $result = array_merge($result, $this->array_simplify($value));
                 } else {
                     $result[$key] = $value;
+                }
+                }  else {
+                    $result[$key] = [];
                 }
             }
         }
